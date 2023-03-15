@@ -1,5 +1,7 @@
-import { getRefs } from './getRefs';
-const refs = getRefs();
+import { get } from './get';
+const refs = get();
+
+//funkcja wyświetla dokładne informacje o "posukiwanym" kraju
 
 function createMarkupArticleCountry(data) {
   const markup = data
@@ -22,6 +24,8 @@ function createMarkupArticleCountry(data) {
   refs.countryInfo.innerHTML = markup;
 }
 
+//fukcja wyświetla listę krajów poasujących do wpisu z pola input
+
 function createMarkupListOfCountries(data) {
   const markup = data
     .map(({ name, flags }) => {
@@ -33,6 +37,8 @@ function createMarkupListOfCountries(data) {
     .join('');
   refs.countryList.innerHTML = markup;
 }
+
+// wyczyszczenie pól
 
 function clearMarkupCountries() {
   refs.countryInfo.innerHTML = '';

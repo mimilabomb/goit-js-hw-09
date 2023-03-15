@@ -1,7 +1,7 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import debounce from 'lodash.debounce';
-import { getRefs } from './js/getRefs';
+import { get } from './js/get';
 import { fetchCountries } from './js/fetchCountries';
 import {
   createMarkupArticleCountry,
@@ -9,8 +9,9 @@ import {
   clearMarkupCountries,
 } from './js/markupCountry';
 
+
 const DEBOUNCE_DELAY = 300;
-const refs = getRefs();
+const refs = get();
 
 refs.searchBox.addEventListener(
   'input',
@@ -28,6 +29,8 @@ function onSearchCountry(e) {
 
   fetchCountries(searchQuery).then(renderSearchQuery).catch(onFetchError);
 }
+
+//funkcja tworząca: listę krajów, informacje o danym kraju oraz informacje o zbyt dużej liczbie zapytań
 
 function renderSearchQuery(data) {
   if (data.length > 10) {
